@@ -50,7 +50,23 @@ class Tree(object):
 
         # FIXME
 
-        pass
+        # DFS = LIFO
+        # Start at the root - check if root.data matches the data argument passed in
+        # If not, add its children to list of nodes to look at
+        # Check the last node in this list
+        # If this node's data does not match the data argument passed in, add this last node's children to the list
+        # Continue checking based on last node added to the list
+        # We are basically looking further down a branch at a time
+
+        to_look_at = [self.root]
+
+        while to_look_at is not None:
+            node = to_look_at.pop()
+
+            if node.data == data:
+                return node
+
+            to_look_at.extend(node.children)
 
     def breadth_first_search(self, data):
         """Return node object with this data, traversing the tree breadth-first.
